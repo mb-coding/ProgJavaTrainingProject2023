@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.Scanner;
 import java.util.*;
+import java.lang.Math;
 
 public class Main {
 
@@ -17,7 +18,7 @@ public class Main {
         items.add("Talon Tach");
         }
 
-        List<Double> prices = new ArrayList<Double>(); {
+    List<Double> prices = new ArrayList<Double>(); {
         prices.add(219.99);
         prices.add(19.99);
         prices.add(69.99);
@@ -27,11 +28,23 @@ public class Main {
         prices.add(13.99);
         }
 
+    List<String> boughtItems = new ArrayList<String>(); {
+        
+    }
+
+    List<Integer> boughtQuantities = new ArrayList<Integer>(); {
+
+    }
+
     public static void main(String[] args) {
         Main instance = new Main();
         System.out.println("\n" + "Below are the products that you can buy from CTRE:" + "\n");
         instance.doStuff();
-
+        System.out.print("Below are the items you purchased:");
+        for (int i = 0; i < instance.boughtItems.size(); i++) {
+            String product = (instance.boughtQuantities.get(i)).toString() + " " + instance.boughtItems.get(i);
+            System.out.println(product);
+        }
     }
 
     // method that prints the amount of money left
@@ -91,6 +104,9 @@ public class Main {
 
     public void calculate(Integer x){
         money = money - (productQuantity * prices.get(x));
+        money = Math.round(money*100.0) / 100.0;
         moneyLeft();
+        boughtItems.add(items.get(x));
+        boughtQuantities.add(productQuantity);
     }
 }
