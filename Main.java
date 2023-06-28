@@ -31,21 +31,62 @@ public class Main {
         prices.add(15.99);
         prices.add(13.99);
         System.out.println("Below are the products that you can buy from CTRE:");
+        Integer productQuantity = 0;
+        Double newMoney = 1000.0;
         for (int i = 0; i < 5; i++) {
             String product = items.get(i) + " $" + (prices.get(i)).toString();
             System.out.println(product);
         }
         System.out.println("What product would you like to add to your cart?");
-        try (Scanner scanner = new Scanner(System.in);)
+        try (Scanner productScanner = new Scanner(System.in);)
         {
-            String newProduct = scanner.nextLine();
-            System.out.println(newProduct);
-            System.out.println(newProduct == items.get(1));
-            if (newProduct == items.get(0)){
-                System.out.print("Yay");
+            String newProduct = productScanner.nextLine();
+            System.out.println("How many " + newProduct + "s " + "would you like to add to your cart?");
+
+
+            try(Scanner quantityScanner = new Scanner(System.in);)
+            {
+                productQuantity = quantityScanner.nextInt();
             }
-            else {
-                System.out.print("Didn't work");
+            catch(Exception ex)
+            {
+                System.out.println("Invalid Entry");
+            }
+
+            if (newProduct.equals(items.get(0))){
+                System.out.println("");
+                newMoney = newMoney - (productQuantity * prices.get(0));
+                System.out.print(newMoney);
+            }
+            else if (newProduct.equals(items.get(1))) {
+                System.out.println("");
+                newMoney = newMoney - (productQuantity * prices.get(1));
+                System.out.print(newMoney);
+            }
+            else if (newProduct.equals(items.get(2))) {
+                System.out.println("");
+                newMoney = newMoney - (productQuantity * prices.get(2));
+                System.out.print(newMoney);
+            }
+            else if (newProduct.equals(items.get(3))) {
+                System.out.println("");
+                newMoney = newMoney - (productQuantity * prices.get(3));
+                System.out.print(newMoney);
+            }
+            else if (newProduct.equals(items.get(4))) {
+                System.out.println("");
+                newMoney = newMoney - (productQuantity * prices.get(4));
+                System.out.print(newMoney);
+            }
+            else if (newProduct.equals(items.get(5))) {
+                System.out.println("");
+                newMoney = newMoney - (productQuantity * prices.get(5));
+                System.out.print(newMoney);
+            }
+            else if (newProduct.equals(items.get(6))) {
+                System.out.println("");
+                newMoney = newMoney - (productQuantity * prices.get(6));
+                System.out.print(newMoney);
             }
         } 
         catch(Exception ex)
