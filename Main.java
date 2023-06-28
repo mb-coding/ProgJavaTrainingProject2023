@@ -5,14 +5,10 @@ import java.util.*;
 public class Main {
 
     // initializing variables
-    static Integer money = 1000;
-
-    // method that prints the amount of money left
-    public static void moneyLeft() {
-        System.out.println("You currently have $" + money + ".");
-    }
+    Double money = 1000.0;
 
     public static void main(String[] args) {
+        Main instance = new Main();
         List<String> items = new ArrayList<String>();
         items.add("Falcon500");
         items.add("Falcon Motor Shaft");
@@ -21,7 +17,6 @@ public class Main {
         items.add("PDP");
         items.add("Battery Cable");
         items.add("Talon Tach");
-        moneyLeft();
         List<Double> prices = new ArrayList<Double>();
         prices.add(219.99);
         prices.add(19.99);
@@ -32,7 +27,6 @@ public class Main {
         prices.add(13.99);
         System.out.println("Below are the products that you can buy from CTRE:");
         Integer productQuantity = 0;
-        Double newMoney = 1000.0;
         for (int i = 0; i < 5; i++) {
             String product = items.get(i) + " $" + (prices.get(i)).toString();
             System.out.println(product);
@@ -54,39 +48,32 @@ public class Main {
             }
 
             if (newProduct.equals(items.get(0))){
-                System.out.println("");
-                newMoney = newMoney - (productQuantity * prices.get(0));
-                System.out.print(newMoney);
+                instance.money = instance.money - (productQuantity * prices.get(0));
+                instance.moneyLeft();
             }
             else if (newProduct.equals(items.get(1))) {
-                System.out.println("");
-                newMoney = newMoney - (productQuantity * prices.get(1));
-                System.out.print(newMoney);
+                instance.money = instance.money - (productQuantity * prices.get(1));
+                instance.moneyLeft();
             }
             else if (newProduct.equals(items.get(2))) {
-                System.out.println("");
-                newMoney = newMoney - (productQuantity * prices.get(2));
-                System.out.print(newMoney);
+                instance.money = instance.money - (productQuantity * prices.get(2));
+                instance.moneyLeft();
             }
             else if (newProduct.equals(items.get(3))) {
-                System.out.println("");
-                newMoney = newMoney - (productQuantity * prices.get(3));
-                System.out.print(newMoney);
+                instance.money = instance.money - (productQuantity * prices.get(3));
+                instance.moneyLeft();
             }
             else if (newProduct.equals(items.get(4))) {
-                System.out.println("");
-                newMoney = newMoney - (productQuantity * prices.get(4));
-                System.out.print(newMoney);
+                instance.money = instance.money - (productQuantity * prices.get(4));
+                instance.moneyLeft();
             }
             else if (newProduct.equals(items.get(5))) {
-                System.out.println("");
-                newMoney = newMoney - (productQuantity * prices.get(5));
-                System.out.print(newMoney);
+                instance.money = instance.money - (productQuantity * prices.get(5));
+                instance.moneyLeft();
             }
             else if (newProduct.equals(items.get(6))) {
-                System.out.println("");
-                newMoney = newMoney - (productQuantity * prices.get(6));
-                System.out.print(newMoney);
+                instance.money = instance.money - (productQuantity * prices.get(6));
+                instance.moneyLeft();
             }
         } 
         catch(Exception ex)
@@ -94,7 +81,11 @@ public class Main {
             System.out.println("Invalid Entry");
         }
 
+    }
 
+    // method that prints the amount of money left
+    public void moneyLeft() {
+        System.out.println("You currently have $" + money + ".");
     }
 }
 
