@@ -21,7 +21,6 @@ public class Main {
         items.add("PDP");
         items.add("Battery Cable");
         items.add("Talon Tach");
-        System.out.println(items);
         moneyLeft();
         List<Double> prices = new ArrayList<Double>();
         prices.add(219.99);
@@ -31,10 +30,29 @@ public class Main {
         prices.add(204.99);
         prices.add(15.99);
         prices.add(13.99);
-        String falcon = items.get(0) + (prices.get(0)).toString();
-        System.out.println(falcon);
-        Double firstPrice = prices.get(0);
-        System.out.println(firstPrice);
+        System.out.println("Below are the products that you can buy from CTRE:");
+        for (int i = 0; i < 5; i++) {
+            String product = items.get(i) + " $" + (prices.get(i)).toString();
+            System.out.println(product);
+        }
+        System.out.println("What product would you like to add to your cart?");
+        try (Scanner scanner = new Scanner(System.in);)
+        {
+            String newProduct = scanner.nextLine();
+            System.out.println(newProduct);
+            System.out.println(newProduct == items.get(1));
+            if (newProduct == items.get(0)){
+                System.out.print("Yay");
+            }
+            else {
+                System.out.print("Didn't work");
+            }
+        } 
+        catch(Exception ex)
+        {
+            System.out.println("Invalid Entry");
+        }
+
 
     }
 }
