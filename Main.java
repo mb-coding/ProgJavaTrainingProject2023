@@ -23,6 +23,19 @@ public class Main {
         items.add("Talon Tach");
         System.out.println(items);
         moneyLeft();
+        List<Double> prices = new ArrayList<Double>();
+        prices.add(219.99);
+        prices.add(19.99);
+        prices.add(69.99);
+        prices.add(299.99);
+        prices.add(204.99);
+        prices.add(15.99);
+        prices.add(13.99);
+        String falcon = items.get(0) + (prices.get(0)).toString();
+        System.out.println(falcon);
+        Double firstPrice = prices.get(0);
+        System.out.println(firstPrice);
+
     }
 }
 
