@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.*;
 import java.lang.Math;
 
-public class Main {
+public class SemiMain {
     Double money = 1000.0;
     Integer productQuantity = 0;
     String newProduct = "";
@@ -31,7 +31,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Main instance = new Main();
+        SemiMain instance = new SemiMain();
         System.out.println("\n" + "Below are the products that you can buy from CTRE:" + "\n");
         for (int i = 0; i < 5; i++) {
             String product = instance.items.get(i) + " $" + (instance.prices.get(i)).toString();
@@ -125,23 +125,18 @@ public class Main {
      
     public void areDone(){
         System.out.println("\n" + "Do you want to continue shopping? Please input Yes or No.");
-        System.out.println();
         try(Scanner areDoneScanner = new Scanner(System.in);)
         {
-            if (areDoneScanner.hasNextLine()) {
-                String done = areDoneScanner.nextLine();
-                if (done.equals("No")){
-                    shopping();
-                }
-                else if (done.equals("Yes")) {
-                    endGame();
-                }
-                else{
-                    areDone();
-                }
+            String done = areDoneScanner.nextLine();
+            System.out.println();
+            if (done.equals("No")){
+                shopping();
             }
-            else {
-                System.out.print("No other line");
+            else if (done.equals("Yes")) {
+                endGame();
+            }
+            else{
+                areDone();
             }
         }
         catch(Exception ex)
