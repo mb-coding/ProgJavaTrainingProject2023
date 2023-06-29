@@ -125,23 +125,18 @@ public class Main {
      
     public void areDone(){
         System.out.println("\n" + "Do you want to continue shopping? Please input Yes or No.");
-        System.out.println();
         try(Scanner areDoneScanner = new Scanner(System.in);)
         {
-            if (areDoneScanner.hasNextLine()) {
-                String done = areDoneScanner.nextLine();
-                if (done.equals("No")){
-                    shopping();
-                }
-                else if (done.equals("Yes")) {
-                    endGame();
-                }
-                else{
-                    areDone();
-                }
+            String done = areDoneScanner.nextLine();
+            System.out.println();
+            if (done.equals("No")){
+                shopping();
             }
-            else {
-                System.out.print("No other line");
+            else if (done.equals("Yes")) {
+                endGame();
+            }
+            else{
+                areDone();
             }
         }
         catch(Exception ex)

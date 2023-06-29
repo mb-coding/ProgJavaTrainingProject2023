@@ -125,18 +125,23 @@ public class SemiMain {
      
     public void areDone(){
         System.out.println("\n" + "Do you want to continue shopping? Please input Yes or No.");
+        System.out.println();
         try(Scanner areDoneScanner = new Scanner(System.in);)
         {
-            String done = areDoneScanner.nextLine();
-            System.out.println();
-            if (done.equals("No")){
-                shopping();
+            if (areDoneScanner.hasNextLine()) {
+                String done = areDoneScanner.nextLine();
+                if (done.equals("No")){
+                    shopping();
+                }
+                else if (done.equals("Yes")) {
+                    endGame();
+                }
+                else{
+                    areDone();
+                }
             }
-            else if (done.equals("Yes")) {
-                endGame();
-            }
-            else{
-                areDone();
+            else {
+                System.out.print("No other line");
             }
         }
         catch(Exception ex)
