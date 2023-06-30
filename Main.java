@@ -8,7 +8,7 @@ public class Main {
     Double money = 1000.0;
     Integer productQuantity = 0;
     String newProduct = "";
-
+    Scanner scanner = new Scanner(System.in);
     // create lists with the items and prices
     List<String> items = new ArrayList<String>(); {
         items.add("Falcon500");
@@ -54,21 +54,23 @@ public class Main {
     // method that takes user input for products and quantities to add to cart
     public void shopping() {
         System.out.println("\n" + "What product would you like to add to your cart?");
-        try (Scanner productScanner = new Scanner(System.in);)
+        try 
         {
-            newProduct = productScanner.nextLine();
+            newProduct = scanner.nextLine();
             // ensures that input is one of the products
             if (newProduct.equals(items.get(0)) || newProduct.equals(items.get(1)) || newProduct.equals(items.get(2)) || newProduct.equals(items.get(3)) || newProduct.equals(items.get(4)) || newProduct.equals(items.get(5)) || newProduct.equals(items.get(6))){
                 System.out.println("\n" + "How many " + newProduct + "s " + "would you like to add to your cart?");
             }
             else {
-                System.out.println("Please enter a valid product");
+                System.out.println("Please enter a valid product.");
                 shopping();
             }
 
-            try(Scanner quantityScanner = new Scanner(System.in);)
+            try
             {
-                productQuantity = quantityScanner.nextInt();
+                productQuantity = scanner.nextInt();
+                String placeholder = scanner.nextLine();
+                // ensure that quantity is a positive integer
                 if (productQuantity < 1){
                     System.out.println("\n" + "Please input a positive integer." + "\n");
                     shopping();
@@ -80,6 +82,7 @@ public class Main {
                 shopping();
 
             }
+            // call the calculate function with the parameter corresponding to the chosen item
             if (newProduct.equals(items.get(0))){
                 calculate(0);
             }
@@ -105,10 +108,10 @@ public class Main {
                 System.out.println("Error");
             }
         } 
-        //catch(Exception ex)
-        //{
-            //System.out.println("Error");
-        //}
+        catch(Exception ex)
+        {
+            System.out.println("Error");
+        }
 
     }
 
@@ -138,14 +141,13 @@ public class Main {
      
     public void areDone(){
         System.out.println("\n" + "Do you want to continue shopping? Please input Yes or No.");
-        try(Scanner areDoneScanner = new Scanner(System.in);)
+        try
         {
-            String done = areDoneScanner.nextLine();
-            System.out.println();
-            if (done.equals("No")){
+            String done = scanner.nextLine();
+            if (done.equals("Yes")){
                 shopping();
             }
-            else if (done.equals("Yes")) {
+            else if (done.equals("No")) {
                 endGame();
             }
             else{
