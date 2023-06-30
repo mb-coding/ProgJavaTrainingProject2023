@@ -9,6 +9,7 @@ public class Main {
     Integer productQuantity = 0;
     String newProduct = "";
     Scanner scanner = new Scanner(System.in);
+    String done = "";
     // create lists with the items and prices
     List<String> items = new ArrayList<String>(); {
         items.add("Falcon500");
@@ -54,64 +55,68 @@ public class Main {
     // method that takes user input for products and quantities to add to cart
     public void shopping() {
         System.out.println("\n" + "What product would you like to add to your cart?");
-        try 
-        {
-            newProduct = scanner.nextLine();
-            // ensures that input is one of the products
-            if (newProduct.equals(items.get(0)) || newProduct.equals(items.get(1)) || newProduct.equals(items.get(2)) || newProduct.equals(items.get(3)) || newProduct.equals(items.get(4)) || newProduct.equals(items.get(5)) || newProduct.equals(items.get(6))){
-                System.out.println("\n" + "How many " + newProduct + "s " + "would you like to add to your cart?");
-            }
-            else {
-                System.out.println("Please enter a valid product.");
-                shopping();
-            }
-
-            try
+        newProduct = "";
+        while (newProduct.equals("")){
+            try 
             {
-                productQuantity = scanner.nextInt();
-                String placeholder = scanner.nextLine();
-                // ensure that quantity is a positive integer
-                if (productQuantity < 1){
-                    System.out.println("\n" + "Please input a positive integer." + "\n");
+                newProduct = scanner.nextLine();
+                // ensures that input is one of the products
+                if (newProduct.equals(items.get(0)) || newProduct.equals(items.get(1)) || newProduct.equals(items.get(2)) || newProduct.equals(items.get(3)) || newProduct.equals(items.get(4)) || newProduct.equals(items.get(5)) || newProduct.equals(items.get(6))){
+                    System.out.println("\n" + "How many " + newProduct + "s " + "would you like to add to your cart?");
+                }
+                else {
+                    System.out.println("Please enter a valid product.");
                     shopping();
                 }
-            }
+                
+                try
+                {
+                    productQuantity = scanner.nextInt();
+                    done = scanner.nextLine();
+                    // ensure that quantity is a positive integer
+                    if (productQuantity < 1){
+                        System.out.println("\n" + "Please input a positive integer." + "\n");
+                        shopping();
+                    }
+                }
+                catch(Exception ex)
+                {
+                    System.out.println("\n" + "Please input a positive integer." + "\n");
+                    shopping();
+
+                }
+                // call the calculate function with the parameter corresponding to the chosen item
+                if (newProduct.equals(items.get(0))){
+                    calculate(0);
+                }
+                else if (newProduct.equals(items.get(1))) {
+                    calculate(1);
+                }
+                else if (newProduct.equals(items.get(2))) {
+                    calculate(2);
+                }
+                else if (newProduct.equals(items.get(3))) {
+                    calculate(3);
+                }
+                else if (newProduct.equals(items.get(4))) {
+                    calculate(4);
+                }
+                else if (newProduct.equals(items.get(5))) {
+                    calculate(5);
+                }
+                else if (newProduct.equals(items.get(6))) {
+                    calculate(6);
+                }
+                else {
+                    System.out.println("Error");
+                }
+            } 
             catch(Exception ex)
             {
-                System.out.println("\n" + "Please input a positive integer." + "\n");
-                shopping();
-
-            }
-            // call the calculate function with the parameter corresponding to the chosen item
-            if (newProduct.equals(items.get(0))){
-                calculate(0);
-            }
-            else if (newProduct.equals(items.get(1))) {
-                calculate(1);
-            }
-            else if (newProduct.equals(items.get(2))) {
-                calculate(2);
-            }
-            else if (newProduct.equals(items.get(3))) {
-                calculate(3);
-            }
-            else if (newProduct.equals(items.get(4))) {
-                calculate(4);
-            }
-            else if (newProduct.equals(items.get(5))) {
-                calculate(5);
-            }
-            else if (newProduct.equals(items.get(6))) {
-                calculate(6);
-            }
-            else {
                 System.out.println("Error");
             }
-        } 
-        catch(Exception ex)
-        {
-            System.out.println("Error");
         }
+        
 
     }
 
@@ -141,23 +146,26 @@ public class Main {
      
     public void areDone(){
         System.out.println("\n" + "Do you want to continue shopping? Please input Yes or No.");
-        try
-        {
-            String done = scanner.nextLine();
-            if (done.equals("Yes")){
-                shopping();
+        while (done.equals("")){
+            try
+            {
+                done = scanner.nextLine();
+                if (done.equals("Yes")){
+                    shopping();
+                }
+                else if (done.equals("No")) {
+                    endGame();
+                }
+                else{
+                    areDone();
+                }
             }
-            else if (done.equals("No")) {
-                endGame();
-            }
-            else{
-                areDone();
+            catch(Exception ex)
+            {
+                System.out.println("Invalid Entry");
             }
         }
-        catch(Exception ex)
-        {
-            System.out.println("Invalid Entry");
-        }
+        
     }
 
     public void endGame() {
