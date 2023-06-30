@@ -4,12 +4,13 @@ import java.util.*;
 import java.lang.Math;
 
 public class Main {
-    // initalize variables
+    // initialize variables
     Double money = 1000.0;
     Integer productQuantity = 0;
     String newProduct = "";
     Scanner scanner = new Scanner(System.in);
     String done = "";
+
     // create lists with the items and prices
     List<String> items = new ArrayList<String>(); {
         items.add("Falcon500");
@@ -74,14 +75,15 @@ public class Main {
                     productQuantity = scanner.nextInt();
                     done = scanner.nextLine();
                     // ensure that quantity is a positive integer
-                    if (productQuantity < 1){
-                        System.out.println("\n" + "Please input a positive integer." + "\n");
-                        shopping();
+                    while (productQuantity < 1){
+                        System.out.println("\n" + "Please input a positive integer.");
+                        productQuantity = scanner.nextInt();
+                        done = scanner.nextLine();
                     }
                 }
                 catch(Exception ex)
                 {
-                    System.out.println("\n" + "Please input a positive integer." + "\n");
+                    System.out.println("\n" + "Sorry, that is not a valid answer.");
                     shopping();
 
                 }
