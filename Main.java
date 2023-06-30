@@ -4,9 +4,12 @@ import java.util.*;
 import java.lang.Math;
 
 public class Main {
+    // initalize variables
     Double money = 1000.0;
     Integer productQuantity = 0;
     String newProduct = "";
+
+    // create lists with the items and prices
     List<String> items = new ArrayList<String>(); {
         items.add("Falcon500");
         items.add("Falcon Motor Shaft");
@@ -25,6 +28,8 @@ public class Main {
         prices.add(15.99);
         prices.add(13.99);
         }
+
+    // create empty lists for the items and quantities bought
     List<String> boughtItems = new ArrayList<String>(); {
     }
     List<Integer> boughtQuantities = new ArrayList<Integer>(); {
@@ -33,6 +38,7 @@ public class Main {
     public static void main(String[] args) {
         Main instance = new Main();
         System.out.println("\n" + "Below are the products that you can buy from CTRE:" + "\n");
+        // for loop that iterates through the items and prices lists to print all items and corresponding prices
         for (int i = 0; i < 5; i++) {
             String product = instance.items.get(i) + " $" + (instance.prices.get(i)).toString();
             System.out.println(product);
@@ -45,11 +51,13 @@ public class Main {
         System.out.println("\n" + "You currently have $" + money + " left.");
     }
 
+    // method that takes user input for products and quantities to add to cart
     public void shopping() {
         System.out.println("\n" + "What product would you like to add to your cart?");
         try (Scanner productScanner = new Scanner(System.in);)
         {
             newProduct = productScanner.nextLine();
+            // ensures that input is one of the products
             if (newProduct.equals(items.get(0)) || newProduct.equals(items.get(1)) || newProduct.equals(items.get(2)) || newProduct.equals(items.get(3)) || newProduct.equals(items.get(4)) || newProduct.equals(items.get(5)) || newProduct.equals(items.get(6))){
                 System.out.println("\n" + "How many " + newProduct + "s " + "would you like to add to your cart?");
             }
@@ -61,10 +69,15 @@ public class Main {
             try(Scanner quantityScanner = new Scanner(System.in);)
             {
                 productQuantity = quantityScanner.nextInt();
+                if (productQuantity < 1){
+                    System.out.println("\n" + "Please input a positive integer." + "\n");
+                    shopping();
+                }
             }
             catch(Exception ex)
             {
-                System.out.println("Please input a positive integer." + "\n");
+                System.out.println("\n" + "Please input a positive integer." + "\n");
+                shopping();
 
             }
             if (newProduct.equals(items.get(0))){
