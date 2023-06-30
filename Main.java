@@ -163,6 +163,7 @@ public class Main {
                     endGame();
                 }
                 else{
+                    done = "";
                     areDone();
                 }
             }
@@ -174,12 +175,14 @@ public class Main {
         
     }
 
-    // method that prints the items bought at checkout
+    // method that prints the items bought at checkout and the money spent/left
     public void endGame() {
         System.out.println("\n" + "Below are the items you purchased:");
         for (int i = 0; i < boughtItems.size(); i++) {
             String product = "x" + (boughtQuantities.get(i)).toString() + " " + boughtItems.get(i);
             System.out.println(product);
         }
+        Double moneySpent = 1000.0 - money;
+        System.out.println("\n" + "You spent $"+ moneySpent + ". You have $" + money + " left.");
     }
 }
