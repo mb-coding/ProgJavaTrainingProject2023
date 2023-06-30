@@ -61,7 +61,7 @@ public class Main {
             try 
             {
                 newProduct = scanner.nextLine();
-                // ensures that input is one of the products
+                // ensure that input is one of the products
                 if (newProduct.equals(items.get(0)) || newProduct.equals(items.get(1)) || newProduct.equals(items.get(2)) || newProduct.equals(items.get(3)) || newProduct.equals(items.get(4)) || newProduct.equals(items.get(5)) || newProduct.equals(items.get(6))){
                     System.out.println("\n" + "How many " + newProduct + "s " + "would you like to add to your cart?");
                 }
@@ -118,13 +118,14 @@ public class Main {
                 System.out.println("Error");
             }
         }
-        
 
     }
 
+    // method that calculates money left and determines if the item is too expensive
     public void calculate(Integer x){
         Double totalPrice = (productQuantity * prices.get(x));
         money = money - totalPrice;
+        // check if the money left would be >=0 after purchase
         if (money < 0.0){
             System.out.println("\n" + "Sorry, you don't have enough to buy this product.");
             money = money + totalPrice;
@@ -134,8 +135,10 @@ public class Main {
             boughtItems.add(items.get(x));
             boughtQuantities.add(productQuantity);
         }
+        // rounds to the nearest cent
         money = Math.round(money*100.0) / 100.0;
         moneyLeft();
+        // check if user has enough money left to buy the cheapest item
         if (money > 13.99) {
             areDone();
         }
@@ -146,6 +149,7 @@ public class Main {
 
     }
      
+    // method that checks if the user wants to continue
     public void areDone(){
         System.out.println("\n" + "Do you want to continue shopping? Please input Yes or No.");
         while (done.equals("")){
@@ -170,6 +174,7 @@ public class Main {
         
     }
 
+    // method that prints the items bought at checkout
     public void endGame() {
         System.out.println("\n" + "Below are the items you purchased:");
         for (int i = 0; i < boughtItems.size(); i++) {
